@@ -10,6 +10,8 @@ local.properties
 .settings/
 .loadpath
 
+.DS_Store
+
 # Eclipse Core
 .project
 
@@ -18,6 +20,8 @@ local.properties
 
 # Locally stored "Eclipse launch configurations"
 *.launch
+
+.recommenders*
 
 # CDT-specific
 .cproject
