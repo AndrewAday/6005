@@ -16,11 +16,10 @@ public class PiGenerator {
      * @return
      */
     public static int[] computePiInHex(int precision) {
-        // TODO: Implement (Problem 1.d)
     	if (precision < 0) return null;
 		int[] digits = new int[precision]; 
-    	for (int i = 0; i < precision; i++) {
-    		digits[i] = piDigit(i);
+    	for (int i = 1; i < precision+1; i++) {
+    		digits[i-1] = piDigit(i);
     	}
         return digits;
     }

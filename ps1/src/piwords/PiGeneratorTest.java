@@ -21,6 +21,6 @@ public class PiGeneratorTest {
     public void computePiInHexTest() {
         assertEquals(null, PiGenerator.computePiInHex(-1));
         assertArrayEquals(new int[]{}, PiGenerator.computePiInHex(0));
-        assertArrayEquals(new int[]{3,2,4,3,15}, PiGenerator.computePiInHex(5));
+        assertArrayEquals(new int[]{2,4,3,15,6}, PiGenerator.computePiInHex(5));
     }
 }
