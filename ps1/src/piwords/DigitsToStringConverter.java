@@ -1,4 +1,5 @@
 package piwords;
+import java.util.HashMap;
 
 public class DigitsToStringConverter {
     /**
@@ -18,7 +19,16 @@ public class DigitsToStringConverter {
      */
     public static String convertDigitsToString(int[] digits, int base,
                                                char[] alphabet) {
-        // TODO: Implement (Problem 3.b)
-        return "";
+        if (base != alphabet.length) return null;
+        HashMap<Integer,Character> lettering = new HashMap<>();
+        for (int i = 0; i < alphabet.length; i++) {
+            lettering.put(i, alphabet[i]);
+        }
+        String s = "";
+        for (int d : digits) {
+            if (d < 0 || d >= base) return null;
+            s += lettering.get(d);
+        }
+        return s;
     }
 }

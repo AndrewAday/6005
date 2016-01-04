@@ -95,7 +95,10 @@ public class PiGenerator {
     }
     
     public static void main(String[] args) {
-    	System.out.println(computePiInHex(5));
+        int[] arr = computePiInHex(5);
+        for (int i : arr)
+            System.out.println(i);
+        
     }
     
 }

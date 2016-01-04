@@ -1,5 +1,4 @@
 package piwords;
-
 public class AlphabetGenerator {
     /**
      * Given a numeric base, return a char[] that maps every digit that is
@@ -52,7 +51,46 @@ public class AlphabetGenerator {
      */
     public static char[] generateFrequencyAlphabet(int base,
                                                    String[] trainingData) {
-        // TODO: Implement (Problem 5.b)
-        return null;
+        if (base < 0) return null;
+        char[] alph = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+        int[] freq = getFrequencies(trainingData);
+        int total = 0;
+        for (int num : freq)
+            total += num;
+        double[] pdf = new double[26];
+        for (int i = 0; i < freq.length; i++) {
+            pdf[i] = (double) freq[i] / (double) total;
+        }
+        double[] cdf = new double[26];
+        for (int i = 0; i < cdf.length; i++) {
+            double cumProb = 0;
+            for (int j = 0; j <= i; j++) {
+                cumProb += pdf[j];
+            }
+            cdf[i] = cumProb * base;
+        }
+        char[] weightedAlph = new char[base];
+        for (int i = 0; i < weightedAlph.length; i++) {
+            for (int j = 0; j < cdf.length; j++) {
+                if (cdf[j] > i) {
+                    weightedAlph[i] = alph[j];
+                    break;
+                }
+            }
+        }
+        return weightedAlph;
     }
+    
+    public static int[] getFrequencies(String[] trainingData) {
+        int[] freq = new int[26];
+        for (String word : trainingData) {
+            for (char c : word.toCharArray()) {
+                if (Character.isLetter(c)) {
+                    freq[c - 'a']++;
+                }
+            }
+        }
+        return freq;
+    }
+    
 }
